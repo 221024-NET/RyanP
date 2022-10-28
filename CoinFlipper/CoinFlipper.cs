@@ -1,5 +1,5 @@
 using System;
-
+namespace coinFlipGame{
 public class Program
 {
 	// Fields
@@ -25,6 +25,15 @@ public class Program
 			// else{
 			// 	loop = false;
 			// }
+			// int[] num;
+			// int number;
+			// int n[];
+			// int new nn[];
+			// int nume = int[];
+
+			// int[] run = {1,2,3};
+			// int [] r = new int[5];
+
 			if (playAgain != "Y"){
 				loop = false;
 			}
@@ -88,4 +97,5 @@ public class Program
 			Console.WriteLine("Tails");
 		}
 	}
+}
 }
