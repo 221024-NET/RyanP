@@ -58,10 +58,11 @@ namespace Wordle{
                                 localTemp[guess[i]]--;
                                 break;
                             }
+
                         }
                     }
-                //}
-            }
+                }
+            //}
             else{
                 Console.WriteLine("Error, must be 5 letters");
                 //k--;
