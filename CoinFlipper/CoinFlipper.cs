@@ -5,6 +5,10 @@ public class Program
 	// Fields
 	public int test = 0;
 	
+	// public enum headTail{
+	// 	Heads,
+	// 	Tails
+	// }
 	// Constructor
 	// Methods
 	//[access modifier] [modifier] [return type] [method name] ([parameters])
@@ -88,6 +92,7 @@ public class Program
 	
 	public static void HoT(int coin)
 	{
+		
 		if (coin == 0)
 		{
 			Console.WriteLine("Heads");	

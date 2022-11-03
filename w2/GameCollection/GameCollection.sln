@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "w1", "CoinFlipper\w1.csproj", "{10DCFD05-B562-46C8-991F-03FC97BF72F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotAndCold", "HotAndCold\HotAndCold.csproj", "{AD0B7C0C-4DB4-45BA-9019-1D2CCCB9DF80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotAndCold.Test", "HotAndCold.Test\HotAndCold.Test.csproj", "{89E5FED4-3167-4C68-B60A-7DDEEECEBBFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10DCFD05-B562-46C8-991F-03FC97BF72F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10DCFD05-B562-46C8-991F-03FC97BF72F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10DCFD05-B562-46C8-991F-03FC97BF72F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10DCFD05-B562-46C8-991F-03FC97BF72F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD0B7C0C-4DB4-45BA-9019-1D2CCCB9DF80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD0B7C0C-4DB4-45BA-9019-1D2CCCB9DF80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD0B7C0C-4DB4-45BA-9019-1D2CCCB9DF80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD0B7C0C-4DB4-45BA-9019-1D2CCCB9DF80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E5FED4-3167-4C68-B60A-7DDEEECEBBFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E5FED4-3167-4C68-B60A-7DDEEECEBBFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E5FED4-3167-4C68-B60A-7DDEEECEBBFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E5FED4-3167-4C68-B60A-7DDEEECEBBFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
