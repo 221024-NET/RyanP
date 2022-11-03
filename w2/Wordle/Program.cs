@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System;
 namespace Wordle{
     public class Program{
@@ -21,6 +22,7 @@ namespace Wordle{
             for(int w=0;w<5;w++){
             letters[randomWord[w]]++;
             }
+            //Dictionary<char,int> localTemp = new Dictionary<char, int>(letters);
             
 
             //Console.WriteLine(letters[5]);
@@ -41,12 +43,19 @@ namespace Wordle{
                     }
                 }
                 //if(correct !=5){
+                //Dictionary<char,int> localTemp = letters.ToDictionary(entry=>entry.Key, entry=>entry.value);//new Dictionary<char,int>();
+                //Dictionary<char,int> localTemp = new Dictionary<char, int>(letters);
+                Dictionary<char,int> localTemp = new Dictionary<char, int>();
+                foreach (KeyValuePair<char,int> kvp in letters){
+                    localTemp.Add(kvp.Key,kvp.Value);
+                }
+                //localTemp = letters;
                 for(int i=0;i<5;i++){
                     //else{
                         for(int j=0;j<5;j++){
-                            if(guess[i]==randomWord[j] && letters[guess[i]]>0){//&& letters[guess[i]]!=0
+                            if(guess[i]==randomWord[j] && letters[guess[i]]>0 && localTemp[guess[i]]>0){//&& letters[guess[i]]!=0
                                 Console.WriteLine("The letter {0} is correct but in the wrong space",guess[i]);
-                                //letters[guess[i]]--;
+                                localTemp[guess[i]]--;
                                 break;
                             }
                         }
