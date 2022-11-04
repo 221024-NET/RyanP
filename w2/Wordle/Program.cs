@@ -5,16 +5,35 @@ namespace Wordle{
     public class Program{
         public static void Main(){
             string pathin = "./wordOptions.txt";
-           // var read = File.ReadAllLines(path);
-            //var rand = new Random();
+            string playerHistory = "./.history";
 
-            //string randomWord = read[rand.Next(0,read.Length-1)];
+            string[] read = File.ReadAllLines(pathin);
+            var rand = new Random();
+
+            string randomWord = read[rand.Next(0,read.Length-1)];
             //randomWord.Substring(0,5);
             //Console.WriteLine(randomWord);
-            string randomWord = "hello";
-            string name = "bob";
-            int wins =0;
+            //string randomWord = "hello";
+
+            //user created
+            Console.WriteLine("Please enter your username:");
+            string username = Console.ReadLine();
+            Console.WriteLine("Please enter your password:");
+            string password = Console.ReadLine();
+
+            User player = new User(username,password);
+
+            bool playAgain=true;
+            List<User> records = player.readFromXml();
+
+            while(playAgain){
+            bool wins =false;
             int correct =0;
+            int turns=0;
+
+            randomWord = read[rand.Next(0,read.Length-1)];
+            
+            Console.WriteLine(randomWord);
             Dictionary<char,int> letters = new Dictionary<char,int>();
             for(int w=0;w<26;w++){
                letters.Add(Convert.ToChar(97+w),0);
@@ -23,13 +42,13 @@ namespace Wordle{
             letters[randomWord[w]]++;
             }
             //Dictionary<char,int> localTemp = new Dictionary<char, int>(letters);
-            
 
             //Console.WriteLine(letters[5]);
             //string alreadyLocated="";
             Console.WriteLine("Welcome to Wordle!");
             
             for(int k=0;k<5;k++){
+                turns++;
                 Console.WriteLine("Type in 5 letters:");
             string guess = Console.ReadLine().ToLower();
             if(guess.Length == 5){
@@ -68,40 +87,65 @@ namespace Wordle{
                 //k--;
             }
             if(correct==5){
-                wins++;
-                string add = "Name: " + name+", Number of wins: " + wins;
+                wins = true;
+                // string add = "Name: " + name+", Number of wins: " + wins;
 
-                string path = "./testFile.txt";
-                // string[] text = {"hi","Hello","There","Hows","It","Going"};
-                if(!File.Exists(path)){
-                    File.WriteAllText(path,add);
-                }
-                else{
-                    File.AppendAllText(path,add); 
-                }
+                // string path = "./testFile.txt";
+                // // string[] text = {"hi","Hello","There","Hows","It","Going"};
+                // if(!File.Exists(path)){
+                //     File.WriteAllText(path,add);
+                // }
+                // else{
+                //     File.AppendAllText(path,add); 
+                // }
+
                     // Console.WriteLine("Name: {0}",name);
                     // Console.WriteLine("Number of wins: {0}",++wins);
                     break;
                 }
             }
+            //
+            //player.saveRecord(playerHistory);
+            player.updateRecord(wins,turns);
+            //Console.WriteLine(player.displayRecord(playerHistory));
+            Console.WriteLine("Play Again? enter y");
 
-            // string path = "./testFile.txt";
+            if(Console.ReadLine().ToLower() != "y"){
+                playAgain = false;
+            }
+            }
+            //end of loop (playagain)
 
-            // // string[] text = {"hi","Hello","There","Hows","It","Going"};
-            // if(!File.Exists(path)){
-            //     File.WriteAllLines(path,add);
-            // }
-            // else{
-            //     File.AppendAllLines(path,add); 
-            // }
-            // File.WriteAllLines(path,text); //overrides existing file, good for creating
-            //adds to exisiting file
-            // string[] content = File.ReadAllLines(path);
+            //want to replace adding player to the records list with checking if player is already on the list
+            //we should be able to use some method call to accomplish this
+            //records.Add(player);
+            //recordsUpdate(records, player);
 
-            // foreach (string s in content){
-            //     Console.WriteLine(s);
-            // }
+            if(records.Exists(x =>x.username == player.username)){
+               //int index = records.FindIndex(x =>x.username == player.username);
+               // records[index].update(player);
+               records.Find(x=>x.username == player.username).update(player);
+
+            }
+            else{
+                records.Add(player);
+            }
             
+            player.SerializeAsXml(records);
+            //player.saveRecord(playerHistory);
+            Console.WriteLine(player.displayRecord(playerHistory,records));
+            
+        }
+        public static void recordsUpdate(List<User> records, User player){
+            if(records.Exists(x =>x.username == player.username)){
+               //int index = records.FindIndex(x =>x.username == player.username);
+               // records[index].update(player);
+               records.Find(x=>x.username == player.username).update(player);
+
+            }
+            else{
+                records.Add(player);
+            }
         }
     }
 
